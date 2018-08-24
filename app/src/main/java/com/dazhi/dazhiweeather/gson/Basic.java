@@ -9,8 +9,8 @@ import com.google.gson.annotations.SerializedName;
 public class Basic {
 
     @SerializedName("city")
-    private String cityName;
+    public String cityName;
 
     @SerializedName("id")
-    private String weatherId;
+    public String weatherId;
 }

@@ -6,7 +6,7 @@ package com.dazhi.dazhiweeather.gson;
 
 public class AQI {
 
-    private AQICity city;
+    public AQICity city;
 
     public class AQICity {
 
