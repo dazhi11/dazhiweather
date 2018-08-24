@@ -4,8 +4,8 @@
     <version value="1"/>
 
     <list>
+        <mapping class="com.dazhi.dazhiweeather.db.Province"/>
         <mapping class="com.dazhi.dazhiweeather.db.City"/>
         <mapping class="com.dazhi.dazhiweeather.db.County"/>
-        <mapping class="com.dazhi.dazhiweeather.db.Province"/>
     </list>
 </litepal>

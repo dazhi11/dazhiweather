@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dazhi.dazhiweeather.R;
 import com.dazhi.dazhiweeather.db.City;
 import com.dazhi.dazhiweeather.db.County;
 import com.dazhi.dazhiweeather.db.Province;
@@ -205,7 +204,7 @@ public class ChooseAreaFragment extends Fragment {
                 if ("province".equals(type)) {
                     result = Utility.handleProvinceResponce(responseText);
                 } else if ("city".equals(type)) {
-                    result = Utility.handleCountyResponse(responseText, selectedProvince.getId());
+                    result = Utility.handleCityResponse(responseText, selectedProvince.getId());
                 } else if ("county".equals(type)) {
                     result = Utility.handleCountyResponse(responseText, selectedCity.getId());
                 }
