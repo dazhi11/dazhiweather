@@ -3,6 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
+    <Button
+        android:id="@+id/title_back_button"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/left" />
+
     <TextView
         android:id="@+id/title_city"
         android:layout_width="wrap_content"
@@ -19,5 +28,5 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:textColor="#FFF"
-        android:textSize="16sp"/>
+        android:textSize="13sp"/>
 </RelativeLayout>

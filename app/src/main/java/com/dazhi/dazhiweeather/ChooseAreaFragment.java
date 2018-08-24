@@ -178,7 +178,7 @@ public class ChooseAreaFragment extends Fragment {
     /**
      * 查询选中的市内所有的县，优先从数据库查询，如果没有查询到再去服务器上查询
      */
-    private void queryCounties() {
+    public void queryCounties() {
         titleText.setText(selectedCity.getCityName());
         backButton.setVisibility(View.VISIBLE);
         countyList = DataSupport.where("cityid=?", String.valueOf(selectedCity.getId())).find(County.class);
