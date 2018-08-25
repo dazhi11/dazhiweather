@@ -115,9 +115,16 @@ public class WeatherActivity extends AppCompatActivity {
             requestWeather(weatherId);
         }
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
             @Override
             public void onRefresh() {
-                requestWeather(weatherId);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this);
+                String weatherString = prefs.getString("weatherid", null);
+                if (weatherString != null) {
+                    requestWeather(weatherString);
+                } else {
+                    requestWeather(weatherId);
+                }
             }
         });
         navButton.setOnClickListener(new View.OnClickListener() {
@@ -182,7 +189,9 @@ public class WeatherActivity extends AppCompatActivity {
 //                        Log.d(TAG, "run weather.status: " + weather.status);
                         if (weather != null && "ok".equals(weather.status)) {
                             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
+                            editor.remove("weather");
                             editor.putString("weather", responseText);
+                            editor.putString("weatherid", weather.basic.weatherId);
                             editor.apply();
                             showWeatherInfo(weather);
                         } else {
@@ -214,7 +223,7 @@ public class WeatherActivity extends AppCompatActivity {
      * @param weather
      */
     private void showWeatherInfo(Weather weather) {
-        if (weather!=null &&"ok".equals(weather.status)) {
+        if (weather != null && "ok".equals(weather.status)) {
             String cityName = weather.basic.cityName;
             String updateTime = "更新:" + weather.update.updateTime;
             String degree = weather.now.temperature + "°C";
