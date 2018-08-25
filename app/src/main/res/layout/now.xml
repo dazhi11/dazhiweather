@@ -43,7 +43,7 @@
         android:paddingLeft="15sp"
         android:text="实时天气"
         android:textColor="#FFF"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

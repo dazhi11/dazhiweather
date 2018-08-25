@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:text="天气预报"
+        android:text="未来三天"
         android:textColor="#FFF"
-        android:textSize="20sp"/>
+        android:textSize="18sp"/>
 
     <LinearLayout
         android:id="@+id/forecast_layout"
