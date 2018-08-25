@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -217,8 +216,6 @@ public class ChooseAreaFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                Log.d(TAG, "返回的数据：" + responseText);
-                Log.d(TAG, "相应的类型：" + type);
                 boolean result = false;
                 if ("province".equals(type)) {
                     result = Utility.handleProvinceResponce(responseText);

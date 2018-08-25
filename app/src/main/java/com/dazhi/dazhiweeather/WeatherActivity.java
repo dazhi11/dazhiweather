@@ -10,7 +10,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -111,7 +110,6 @@ public class WeatherActivity extends AppCompatActivity {
             //无缓存时去服务器查询天气
             weatherId = getIntent().getStringExtra("weather_id");
             weatherLayout.setVisibility(View.INVISIBLE);
-            Log.d(TAG, "onCreate weatherId: " + weatherId);
             requestWeather(weatherId);
         }
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -175,21 +173,16 @@ public class WeatherActivity extends AppCompatActivity {
     public void requestWeather(String weatherId) {
         String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId +
                 "&key=0d1e854537ba46b3ad9ebf12573eaa58";
-        Log.d(TAG, "requestWeather weatherUrl: " + weatherUrl);
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseText = response.body().string();
-                Log.d(TAG, "获取天气信息 responseText: " + responseText);
                 final Weather weather = Utility.handleWeatherResponse(responseText);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d(TAG, "run weather: " + weather);
-//                        Log.d(TAG, "run weather.status: " + weather.status);
                         if (weather != null && "ok".equals(weather.status)) {
                             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
-                            editor.remove("weather");
                             editor.putString("weather", responseText);
                             editor.putString("weatherid", weather.basic.weatherId);
                             editor.apply();
