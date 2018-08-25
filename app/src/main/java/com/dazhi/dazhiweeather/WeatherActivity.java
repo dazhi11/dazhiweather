@@ -62,13 +62,25 @@ public class WeatherActivity extends AppCompatActivity {
 
     private TextView air_quality;
 
-    private TextView windText;
-
     private ImageView bingPicImg;
 
     public SwipeRefreshLayout swipeRefresh;
 
     public DrawerLayout drawerLayout;
+
+    private TextView windScText;
+
+    private TextView windSpdText;
+
+    private TextView flText;
+
+    private TextView humText;
+
+    private TextView pcpnText;
+
+    private TextView visText;
+
+    private TextView windDirText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +105,17 @@ public class WeatherActivity extends AppCompatActivity {
         sportText = (TextView) findViewById(R.id.sport_text);
         navButton = (Button) findViewById(R.id.nav_button);
         air_quality = (TextView) findViewById(R.id.air_quality);
-        windText = (TextView) findViewById(R.id.wind_text);
         bingPicImg = (ImageView) findViewById(R.id.bing_pic_img);
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swie_refresh);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        windScText = (TextView) findViewById(R.id.wind_sc_text);
+        windSpdText = (TextView) findViewById(R.id.wind_spd_text);
+        flText = (TextView) findViewById(R.id.fl_text);
+        humText = (TextView) findViewById(R.id.hum_text);
+        pcpnText = (TextView) findViewById(R.id.pcpn_text);
+        visText = (TextView) findViewById(R.id.vis_text);
+        windDirText = (TextView) findViewById(R.id.wind_dir_text);
+
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather", null);
@@ -222,10 +241,22 @@ public class WeatherActivity extends AppCompatActivity {
             String degree = weather.now.temperature + "°C";
             String weatherInfo = weather.now.cond_txt;
             String wind = weather.now.wind_dir;
+            String wind_sc = weather.now.wind_sc;
+            String wind_spd = weather.now.wind_spd;
+            String fl = weather.now.fl;
+            String hum = weather.now.hum;
+            String pcpn = weather.now.pcpn;
+            String vis = weather.now.vis;
             titleCity.setText(cityName);
             titlUpdateTime.setText(updateTime);
+            windDirText.setText(wind);
+            windScText.setText(wind_sc + "(级)");
+            windSpdText.setText(wind_spd + "km/h");
+            flText.setText(fl + "°C");
+            humText.setText(hum);
+            pcpnText.setText(pcpn + "ml");
+            visText.setText(vis + "km");
             degreeText.setText(degree);
-            windText.setText(wind);
             weatherInfoText.setText(weatherInfo);
             forecastLayout.removeAllViews();
             for (Forecast forecast : weather.forecastList) {
@@ -234,7 +265,6 @@ public class WeatherActivity extends AppCompatActivity {
                 TextView infoText = (TextView) view.findViewById(R.id.info_text);
                 TextView maxText = (TextView) view.findViewById(R.id.max_text);
                 TextView minText = (TextView) view.findViewById(R.id.min_text);
-                TextView windText = (TextView) view.findViewById(R.id.wind_text);
                 dateText.setText(forecast.date);
                 infoText.setText(forecast.more.info);
                 maxText.setText(forecast.temperature.max);

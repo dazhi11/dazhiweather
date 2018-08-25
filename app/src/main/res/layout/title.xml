@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
-        android:background="@drawable/ic_menu" />
+        android:background="@drawable/nav" />
 
     <TextView
         android:id="@+id/title_city"
@@ -20,13 +20,4 @@
         android:textColor="#FFF"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/title_update_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:textColor="#FFF"
-        android:textSize="13sp" />
 </RelativeLayout>

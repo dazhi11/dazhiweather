@@ -14,4 +14,16 @@ public class Now {
     public String cond_txt;
 
     public String wind_dir;
+
+    public String wind_sc;
+
+    public String wind_spd;
+
+    public String fl;
+
+    public String hum;
+
+    public String pcpn;
+
+    public String vis;
 }
